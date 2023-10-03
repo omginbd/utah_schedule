@@ -64,6 +64,8 @@ defmodule UtahSchedule do
           changes ->
             Finch.build(:post, "https://ntfy.sh/michaelsutahutesschedule", [], inspect(changes))
             |> Finch.request(UtahSchedule.Finch)
+
+            :ets.insert(:games, {"games", games})
         end
     end
   end
